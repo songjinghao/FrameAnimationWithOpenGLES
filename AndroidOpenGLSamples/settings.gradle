@@ -1,0 +1,3 @@
+rootProject.name='AndroidOpenGLSamples'
+include ':app'
+include ':frameanimation'

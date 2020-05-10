@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <com.paul.song.frameanimation.gles20.FrameAnimationView
+        android:id="@+id/av20"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:scaleType="centerInside"
+        app:oneshot="false"
+        app:stepDuration="50"
+        app:src="assets/Test.zip"/>
+
+    <com.paul.song.frameanimation.gles30.FrameAnimationView
+        android:id="@+id/av30"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:scaleType="centerInside"
+        app:oneshot="false"
+        app:stepDuration="50"
+        app:src="assets/Avatar_ETC2.zip"/>
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STOP"/>
+
+    <Button
+        android:id="@+id/playAnother"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="切换1"
+        app:layout_constraintTop_toBottomOf="@id/stop"/>
+
+    <Button
+        android:id="@+id/playAnother2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="切换2"
+        app:layout_constraintTop_toBottomOf="@id/playAnother"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
