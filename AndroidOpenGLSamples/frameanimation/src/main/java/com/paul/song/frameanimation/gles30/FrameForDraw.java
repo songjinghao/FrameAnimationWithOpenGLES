@@ -1,14 +1,13 @@
 package com.paul.song.frameanimation.gles30;
 
 import android.content.res.Resources;
-import android.opengl.ETC1Util;
 import android.opengl.GLES30;
 import android.util.Log;
 import android.util.SparseArray;
 
+import com.paul.song.common.gl.MatrixState;
+import com.paul.song.common.gl.ShaderUtil;
 import com.paul.song.frameanimation.listener.AnimationStateChangedListener;
-import com.paul.song.frameanimation.utils.MatrixState;
-import com.paul.song.frameanimation.utils.ShaderUtil;
 import com.paul.song.frameanimation.utils.ZipPkmReader;
 
 import java.nio.ByteBuffer;

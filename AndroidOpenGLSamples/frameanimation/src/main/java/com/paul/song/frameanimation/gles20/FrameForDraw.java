@@ -6,9 +6,9 @@ import android.opengl.GLES20;
 import android.util.Log;
 import android.util.SparseArray;
 
+import com.paul.song.common.gl.MatrixState;
+import com.paul.song.common.gl.ShaderUtil;
 import com.paul.song.frameanimation.listener.AnimationStateChangedListener;
-import com.paul.song.frameanimation.utils.MatrixState;
-import com.paul.song.frameanimation.utils.ShaderUtil;
 import com.paul.song.frameanimation.utils.ZipPkmReader;
 
 import java.nio.ByteBuffer;

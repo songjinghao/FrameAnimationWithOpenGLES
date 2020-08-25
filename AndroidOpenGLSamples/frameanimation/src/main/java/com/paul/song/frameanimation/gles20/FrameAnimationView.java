@@ -6,10 +6,11 @@ import android.graphics.PixelFormat;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
+import android.util.Log;
 
+import com.paul.song.common.gl.MatrixState;
 import com.paul.song.frameanimation.R;
 import com.paul.song.frameanimation.listener.AnimationStateChangedListener;
-import com.paul.song.frameanimation.utils.MatrixState;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -162,6 +163,7 @@ public class FrameAnimationView extends GLSurfaceView {
 
         @Override
         public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+            Log.d("sjh", "onSurfaceCreated: " + Thread.currentThread().getName());
             //设置屏幕背景色RGBA
             GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             //创建帧动画绘制类

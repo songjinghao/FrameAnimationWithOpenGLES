@@ -1,4 +1,4 @@
-package com.paul.song.frameanimation.utils;
+package com.paul.song.common.gl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -6,6 +6,8 @@ import java.io.InputStream;
 import android.content.res.Resources;
 import android.opengl.GLES20;
 import android.util.Log;
+
+import com.paul.song.common.interfaces.ShaderType;
 
 /**
  * Copyright (C)
@@ -26,7 +28,7 @@ public class ShaderUtil {
      * @param source shader的脚本字符串
      * @return
      */
-    public static int loadShader(int shaderType, String source) {
+    public static int loadShader(@ShaderType final int shaderType, final String source) {
         //创建一个新shader
         int shader = GLES20.glCreateShader(shaderType);
         //若创建成功则加载shader
@@ -36,16 +38,22 @@ public class ShaderUtil {
             //编译shader
             GLES20.glCompileShader(shader);
             //存放编译成功shader数量的数组
-            int[] compiled = new int[1];
+            final int[] compiled = new int[1];
             //获取Shader的编译情况
             GLES20.glGetShaderiv(shader, GLES20.GL_COMPILE_STATUS, compiled, 0);
-            if (compiled[0] == 0) {//若编译失败则显示错误日志并删除此shader
+            //若编译失败则显示错误日志并删除此shader
+            if (compiled[0] == GLES20.GL_FALSE) {
                 Log.e("ES20_ERROR", "Could not compile shader " + shaderType + ":");
                 Log.e("ES20_ERROR", GLES20.glGetShaderInfoLog(shader));
                 GLES20.glDeleteShader(shader);
                 shader = 0;
             }
         }
+
+        if (shader == 0) {
+            throw new RuntimeException("Error creating shader.");
+        }
+
         return shader;
     }
 
@@ -80,13 +88,18 @@ public class ShaderUtil {
             //获取program的链接情况
             GLES20.glGetProgramiv(program, GLES20.GL_LINK_STATUS, linkStatus, 0);
             //若链接失败则报错并删除程序
-            if (linkStatus[0] != GLES20.GL_TRUE) {
+            if (linkStatus[0] == GLES20.GL_FALSE) {
                 Log.e("ES20_ERROR", "Could not link program: ");
                 Log.e("ES20_ERROR", GLES20.glGetProgramInfoLog(program));
                 GLES20.glDeleteProgram(program);
                 program = 0;
             }
         }
+
+        if (program == 0) {
+            throw new RuntimeException("Error creating program.");
+        }
+
         return program;
     }
 
@@ -99,7 +112,7 @@ public class ShaderUtil {
         }
     }
 
-    //从sh脚本中加载shader内容的方法
+    //从shader脚本中加载shader内容的方法
     public static String loadFromAssetsFile(String fname, Resources r) {
         String result = null;
         try {

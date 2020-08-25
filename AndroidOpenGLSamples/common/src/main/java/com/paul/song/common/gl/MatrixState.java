@@ -1,4 +1,4 @@
-package com.paul.song.frameanimation.utils;
+package com.paul.song.common.gl;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

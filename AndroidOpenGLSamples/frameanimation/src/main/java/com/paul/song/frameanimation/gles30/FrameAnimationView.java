@@ -7,9 +7,9 @@ import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 
+import com.paul.song.common.gl.MatrixState;
 import com.paul.song.frameanimation.R;
 import com.paul.song.frameanimation.listener.AnimationStateChangedListener;
-import com.paul.song.frameanimation.utils.MatrixState;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
